@@ -1,3 +1,5 @@
+console.log('%c FocusGuard Debug Logs Enabled ', 'background: #4CAF50; color: white; font-size: 16px; font-weight: bold; padding: 8px;');
+
 let isMonitoring = false;
 let apiKey = '';
 let activity1 = '';
@@ -7,13 +9,17 @@ let evaluatedTabs = new Set();
 let initializedTabs = new Set(); // Track tabs where content script is initialized
 
 // Add a debug flag that can be toggled for detailed logging
-const DEBUG = true;
+const DEBUG = true; // Ensure this is set to true
 
+// Debug logging function
 function debugLog(...args) {
   if (DEBUG) {
     console.log('%c[FocusGuard BG]', 'color: #e74c3c; font-weight: bold;', ...args);
   }
 }
+
+// Immediate test of debug logging
+debugLog('Debug logging is working!');
 
 // Log when background script starts
 console.log('%c FocusGuard background script started! ', 'background: #e74c3c; color: white; font-size: 14px; font-weight: bold; padding: 5px;');
@@ -502,12 +508,13 @@ async function callGeminiAPI(apiKey, prompt) {
 }
 
 function extractCategory(response) {
-  // Extract category from the response
-  const categoryMatch = response.match(/Category:\s*([A-Za-z\s&]+)/i);
-  if (categoryMatch && categoryMatch[1]) {
-    return categoryMatch[1].trim();
-  }
-  return 'Unknown';
+    // Extract category from the response
+    const categoryMatch = response.match(/Category:\s*([A-Za-z\s&]+)/i);
+    if (categoryMatch && categoryMatch[1]) {
+        // Remove any trailing " IsRelated" from the category
+        return categoryMatch[1].replace(/\s*IsRelated$/, '').trim();
+    }
+    return 'Unknown';
 }
 
 function isContentRelated(response) {
