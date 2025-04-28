@@ -5,8 +5,8 @@ FocusGuard is a productivity-enhancing Google Chrome addon designed to help user
 ## Features
 
 ### User Inputs
-1. **API Key Input**: Users must provide a Google Gemini Flash API key. The input will be masked, showing only the last four characters for security.
-2. **Activity Descriptions**: Two input fields allow users to describe their planned activities, each limited to 200 words.
+1. **API Key Input**: Users must provide a Google Gemini Flash API key. The input will be masked.
+2. **Activity Descriptions**: Two input fields allow users to describe their planned activities, each limited to 120 words.
 3. **Guard Activation**: A "Guard" button activates monitoring. Once activated, the button changes to "Stop Guarding" to allow users to stop monitoring.
 4. **Monitoring Duration**: Users can specify the monitoring duration in minutes or hours.
 5. **Readonly Fields**: Input fields become readonly while monitoring is active.
@@ -37,12 +37,12 @@ FocusGuard is a productivity-enhancing Google Chrome addon designed to help user
 
 ## How It Works
 
-1. **Google Gemini Flash Integration**: The addon uses Google Gemini Flash 2.0 to evaluate website content and determine its category.
+1. **Google Gemini Flash Integration**: The addon uses GoogleGenAI "gemini-2.0-flash" to evaluate website content and determine its category.
 2. **Content Analysis**:
      - Page titles and links are analyzed to determine the category.
      - For platforms like YouTube, video titles and comments are reviewed.
      - Major page content is sent to Google Gemini for relevance evaluation.
-3. **Evaluation Timing**: The addon waits at least one minute before starting evaluations to avoid unnecessary checks.
+3. **Evaluation Timing**: The addon waits at least 30 seconds before starting evaluations to avoid unnecessary checks.
 4. **Visual Feedback**: Content category is highlighted in green, while irrelevant content category is highlighted in red.
 
 ## Getting Started
